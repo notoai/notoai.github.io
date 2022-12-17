@@ -1,6 +1,6 @@
 {
   "name": "notoai.github.io",
-  "homepage":"https://notoai.xyz",
+  "homepage":"https://notoai.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
