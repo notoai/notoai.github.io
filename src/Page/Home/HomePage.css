@@ -3,7 +3,7 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 780px;
+    max-width: 942px;
     font-style: normal;
     font-size: 20px;
     line-height: 24px;
@@ -82,6 +82,8 @@
     line-height: 29px;
     text-align: left;
     color: #FFFFFF;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .HomePageContent span {
@@ -89,6 +91,7 @@
 }
 
 .HomePageLinkPanel {
+    position: relative;
     width: 30px;
     height: 30px;
     display: flex;
@@ -106,6 +109,7 @@
 }
 
 .HomePageContentLogin {
+    position: relative;
     width: 100%;
     height: 220px;
     display: flex;
@@ -115,23 +119,107 @@
 }
 
 .HomePageContentMint {
+    position: relative;
     width: 100%;
     height: 330px;
 }
 
 .HomePageMintLabel {
+    position: relative;
     margin-top: 6px;
     color: #FFFFFF;
     opacity: 0.3;
 }
 
 .HomePageMintSoldOutLabel {
+    position: relative;
     margin-top: 6px;
     color: #FFFFFF;
 }
 
 .HomePageMintSoldOutTitle {
+    position: relative;
     color: #FF0000;
     margin-bottom: 14px;
+}
+
+.HomePageMintTitle {
+    position: relative;
+    margin-left: 19px;
+    margin-top: 38px;
+    text-align: left;
+    opacity: 0.5;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 32px;
+    color: #FFFFFF;
+    font-family: 'A-OTF Haruhi Gakuen';
+}
+
+.HomePageMintInputPanel {
+    position: relative;
+    width: 309px;
+    height: 52px;
+    margin-left: 19px;
+    background: #000000;
+    border: 1px solid #404040;
+}
+
+.HomePageMintInputButton:hover {
+    filter: drop-shadow(0 0 5px #EF0000);
+}
+
+.HomePageMintInputButton:active {
+    filter: brightness(50%);
+}
+
+.HomePageMintInputButton {
+    position: absolute;
+    right: 0;
+    width: 32px;
+    height: calc(50% - 1px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #404040;
+}
+
+.HomePageMintInputUp {
+    top: 0;
+}
+
+.HomePageMintInputDown {
+    bottom: 0;
+}
+
+.HomePageMintPricePanel {
+    position: relative;
+    height: 46px;
+    margin: 19px 12px 30px 19px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HomePageMintPricePanel span {
+    font-family: 'A-OTF Haruhi Gakuen';
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 32px;
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.HomePageMintPricePanel label {
+    font-family: 'A-OTF Haruhi Gakuen';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: right;
+    text-transform: uppercase;
+    color: #FFFFFF;
 }
 

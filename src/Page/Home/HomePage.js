@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './HomePage.css'
-import {GetSvgMintTitle, SvgJumpIcon, SvgOpenSeeIcon, SvgTwitterIcon} from '../../SVG/SvgImages';
+import {GetSvgMintTitle, SvgDown, SvgJumpIcon, SvgOpenSeeIcon, SvgTwitterIcon, SvgUp} from '../../SVG/SvgImages';
 
 class HomePage extends Component {
 
@@ -17,7 +17,7 @@ class HomePage extends Component {
             </div>);
         } else if (this.props.Address === undefined) {
             return (<div className='HomePageContentLogin'>
-                <button>
+                <button onClick={this.props.OnConnectClicked}>
                     CONNECT WALLET
                 </button>
                 <span className='HomePageMintLabel'>
@@ -26,7 +26,29 @@ class HomePage extends Component {
             </div>);
         } else {
             return (<div className='HomePageContentMint'>
-
+                <div className='HomePageMintTitle'>Mint number</div>
+                <div className='HomePageMintInputPanel'>
+                    <div className='HomePageMintInputUp HomePageMintInputButton'>
+                        {SvgUp("#6C6C6C")}
+                    </div>
+                    <div className='HomePageMintInputDown HomePageMintInputButton'>
+                        {SvgDown("#6C6C6C")}
+                    </div>
+                </div>
+                <div className='HomePageMintPricePanel'>
+                    <span>Total price</span>
+                    <label>0.02 ETH</label>
+                </div>
+                <div>
+                    <button onClick={this.props.OnMintClicked}>
+                        MINT
+                    </button>
+                </div>
+                <div style={{marginTop: '10px'}}>
+                    <span
+                        className='HomePageMintLabel'>{this.props.MintCurrent + '/' + this.props.MintMax + ' mint'}
+                    </span>
+                </div>
             </div>);
         }
     }
@@ -65,11 +87,7 @@ class HomePage extends Component {
                 but also in the field of web3, we should respect the creativity from our human brains. That's the soul.
             </div>
             <div style={{
-                height: '2px',
-                width: '100%',
-                marginTop: '10px',
-                marginBottom: '8px',
-                background: '#ffffff'
+                height: '2px', width: 'calc(100% - 80px)', margin: '20px 40px 15px', background: '#ffffff'
             }}/>
             <div className='HomePageContent'>
                 <span>No-to-AI</span> can be seen as a light WEB3 digital art fund. We will put the NFT revenue in the
@@ -81,8 +99,7 @@ class HomePage extends Component {
             </div>
             <div
                 style={{
-                    marginTop: '29px',
-                    marginBottom: '150px'
+                    marginTop: '29px', marginBottom: '150px'
                 }}
                 className='HomePageContent'>
                 All holders of <span>No-to-AI NFT</span> will receive airdrops and free-mints of digital artworks

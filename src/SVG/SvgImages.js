@@ -55,3 +55,25 @@ export function SvgJumpIcon(color) {
         </svg>
     );
 }
+
+export function SvgUp(color) {
+    return (
+        <svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M5.98356 0.288653L10.1349 5.82379C10.3915 6.16588 10.1474 6.65406 9.71978 6.65406H1.41708C0.989466 6.65406 0.745375 6.16588 1.00194 5.82379L5.15329 0.288653C5.36086 0.011896 5.776 0.011896 5.98356 0.288653Z"
+                fill={color}/>
+        </svg>
+    );
+}
+
+
+export function SvgDown(color) {
+    return (
+        <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M5.98356 7.09511L10.1349 1.55997C10.3915 1.21788 10.1474 0.7297 9.71978 0.7297H1.41708C0.989466 0.7297 0.745375 1.21788 1.00194 1.55997L5.15329 7.09511C5.36086 7.37186 5.776 7.37186 5.98356 7.09511Z"
+                fill={color}/>
+        </svg>
+
+    );
+}
