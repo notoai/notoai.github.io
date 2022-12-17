@@ -19,7 +19,7 @@
     background: #242424;
 }
 
-.HomePageMintPanelHeader{
+.HomePageMintPanelHeader {
     position: relative;
     top: 8px;
     height: 60px;
@@ -34,7 +34,7 @@
     margin-right: 15px;
 }
 
-.HomePageMintPanelHeaderRight{
+.HomePageMintPanelHeaderRight {
     position: relative;
     width: 100px;
     height: 20px;
@@ -45,7 +45,21 @@
     background-color: #61dafb;
 }
 
-.HomePageSubTitleImg{
+.HomePageSubTitleImg {
     position: relative;
     margin-top: -20px;
+}
+
+.HomePageContent {
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.HomePageContent span {
+    color: #EF0000;
 }
