@@ -1,6 +1,7 @@
 import React from "react";
 import './App.css';
 import HomePage from "../Home/HomePage";
+import Artwork from "../Artwork/Artwork";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                 MintCurrent={0}
                 MintPrise={0.02}
             />
+            <Artwork/>
         </div>
     );
 }

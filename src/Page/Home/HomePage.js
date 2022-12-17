@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import './HomePage.css'
-import {GetSvgMintTitle, SvgDown, SvgJumpIcon, SvgOpenSeeIcon, SvgTwitterIcon, SvgUp} from '../../SVG/SvgImages';
+import {
+    GetSvgMintTitle,
+    SvgConnect,
+    SvgDown,
+    SvgJumpIcon,
+    SvgOpenSeeIcon,
+    SvgTwitterIcon,
+    SvgUp
+} from '../../SVG/SvgImages';
 
 class HomePage extends Component {
 
@@ -53,16 +61,42 @@ class HomePage extends Component {
         }
     }
 
+    buildConnectButton() {
+        if (this.props.Address === undefined) {
+            return (
+                <button
+                    className='HomePageWalletButton HomePageWalletButtonEn'
+                    onClick={this.props.OnConnectClicked}>
+                    <div style={{
+                        transform: ['Scale(0.8)'],
+                        marginRight: '10px'
+                    }}>
+                        {SvgConnect('#000000')}
+                    </div>
+                    Connect Wallet
+                </button>
+            );
+        } else {
+            return (
+                <div className='HomePageWalletButton'>
+                    {this.props.Address}
+                </div>
+            );
+
+        }
+    }
+
     render() {
         return (<div className='HomePageRoot'>
             <div className='HomePageHeader'>
                 <img
-                    src={process.env.PUBLIC_URL + '/images/Logo.jpg'}
+                    src={process.env.PUBLIC_URL + '/images/Title.jpg'}
                     alt='banner'/>
                 <img
                     className='HomePageSubTitleImg'
                     src={process.env.PUBLIC_URL + '/images/SubTitle.png'}
                     alt='banner'/>
+                {this.buildConnectButton()}
                 <div className='HomePageMintPenal'>
                     <div className='HomePageMintPanelHeader'>
                         {GetSvgMintTitle()}
