@@ -1,3 +1,68 @@
 .App {
-  text-align: center;
+    text-align: center;
+    overflow: scroll;
+    overflow-x: hidden;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: #202123;
+}
+
+.AppHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;color: #FAFAFA;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.AppHeaderLogo {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.AppHeaderItem{
+    height: 40px;
+    margin-right: 40px;
+    display: flex;
+    align-items: end;
+}
+
+.AppHeaderItem:hover{
+    filter: drop-shadow(0 0 10px #FF0000) brightness(150%);
+}
+
+.AppHeaderItem:active{
+    filter: brightness(50%);
+}
+
+.AppHeaderItem span{
+    color: #EF0000;
+    margin-left: 5px;
+    margin-right: 5px;
 }
