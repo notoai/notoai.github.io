@@ -2,19 +2,39 @@ import React, {useEffect, useState} from "react";
 import './App.css';
 import HomePage from "../Home/HomePage";
 import Artwork from "../Artwork/Artwork";
+import {WalletConnect, WalletDisconnect, WalletType} from "../../Web3/WalletUtils";
+import {useWeb3React} from "@web3-react/core";
 
 function App() {
 
+    const context = useWeb3React()
+    const {account} = context
+
     const [selectID, setSelectID] = useState([])
+
+    const web3ReactContext = useWeb3React()
 
     useEffect(() => {
         setSelectID(0);
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+    const connect = (target) => {
+        WalletConnect(web3ReactContext, target, (error) => {
+            disconnect()
+        }).then()
+    }
+
+
+    const disconnect = () => {
+        WalletDisconnect(web3ReactContext)
+    }
+
+
     const OnMintClick = () => {
         console.log('mint click\r\n');
     };
     const OnConnectClick = () => {
+        connect(WalletType.MetaMask);
         console.log('mint connect wallet\r\n');
     };
 
@@ -24,7 +44,7 @@ function App() {
                 <HomePage
                     OnMintClicked={OnMintClick}
                     OnConnectClicked={OnConnectClick}
-                    Address={undefined}
+                    Address={account}
                     SoldOut={false}
                     MintMax={2020}
                     MintCurrent={0}
@@ -37,36 +57,43 @@ function App() {
             );
         }
     }
-
     return (
         <div className="App">
-            <div className='AppHeader'>
-                <img
-                    className='AppHeaderLogo'
-                    src={process.env.PUBLIC_URL + '/images/Logo.png'}
-                    alt='banner'/>
-                <div
-                    style={{
-                        opacity: (selectID === 0) ? 1 : 0.5
-                    }}
-                    onClick={() => {
-                        setSelectID(0)
-                    }}
-                    className='AppHeaderItem'>
-                    Mint<span>No-to-AI</span>NFT
+                <div className='AppHeader'>
+                    <img
+                        className='AppHeaderLogo'
+                        src={process.env.PUBLIC_URL + '/images/Logo.png'}
+                        alt='banner'/>
+                    <div
+                        onClick={() => {
+                            setSelectID(0)
+                        }}
+                        className='AppHeaderItem'>
+                        <div
+                            style={{
+                                filter: (selectID === 0) ? 'brightness(100%)' : 'brightness(50%)'
+                            }}>
+                            Mint<span>No-to-AI</span>NFT
+                        </div>
+                    </div>
+                    <div
+                        onClick={() => {
+                            setSelectID(1)
+                        }}
+                        className='AppHeaderItem'>
+                        <div
+                            style={{
+                                filter: (selectID === 1) ? 'brightness(100%)' : 'brightness(50%)'
+                            }}>
+                            Artwork airdrop
+                        </div>
+                    </div>
                 </div>
-                <div
-                    style={{
-                        opacity: (selectID === 1) ? 1 : 0.5
-                    }}
-                    onClick={() => {
-                        setSelectID(1)
-                    }}
-                    className='AppHeaderItem'>
-                    Artwork airdrop
-                </div>
-            </div>
-            {BuildContent(selectID)}
+                {BuildContent(selectID)}
+                <button onClick={connect}
+                        className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800">Connect
+                    to MetaMask
+                </button>
         </div>
     );
 }
