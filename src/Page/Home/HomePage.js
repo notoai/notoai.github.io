@@ -15,7 +15,8 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            MintValue: 0
+            MintValue: 0,
+            MintTotalPrice: 0
         }
     }
 
@@ -32,25 +33,28 @@ class HomePage extends Component {
     OnValueChange = (e) => {
         let value = this.GetLimitValue(e.target.value);
         this.setState({
-            MintValue: value
+            MintValue: value,
+            MintTotalPrice: value * this.props.MintPrise
         })
 
     }
 
-    OnClick = (e) => {
-        let id = e.target.id;
+
+    OnClickUp = () => {
         let value = this.state.MintValue;
-        if (id === 'btnUp') {
-            value = this.GetLimitValue(value + 1);
-            this.setState({
-                MintValue: value
-            })
-        } else if (id === 'btnDown') {
-            value = this.GetLimitValue(value - 1);
-            this.setState({
-                MintValue: value
-            })
-        }
+        value = this.GetLimitValue(value + 1);
+        this.setState({
+            MintValue: value,
+            MintTotalPrice: value * this.props.MintPrise
+        })
+    }
+    OnClickDown = () => {
+        let value = this.state.MintValue;
+        value = this.GetLimitValue(value - 1);
+        this.setState({
+            MintValue: value,
+            MintTotalPrice: value * this.props.MintPrise
+        })
     }
 
     BuildDialog() {
@@ -68,9 +72,6 @@ class HomePage extends Component {
                 <button onClick={this.props.OnConnectClicked}>
                     CONNECT WALLET
                 </button>
-                <span className='HomePageMintLabel'>
-                    {this.props.MintCurrent + '/' + this.props.MintMax + ' mint'}
-                </span>
             </div>);
         } else {
             return (<div className='HomePageContentMint'>
@@ -82,23 +83,26 @@ class HomePage extends Component {
                     />
                     <div
                         id='btnUp'
-                        onClick={this.OnClick}
+                        onClick={this.OnClickUp}
                         className='HomePageMintInputUp HomePageMintInputButton'>
                         {SvgUp("#6C6C6C")}
                     </div>
                     <div
                         id='btnDown'
-                        onClick={this.OnClick}
+                        onClick={this.OnClickDown}
                         className='HomePageMintInputDown HomePageMintInputButton'>
                         {SvgDown("#6C6C6C")}
                     </div>
                 </div>
                 <div className='HomePageMintPricePanel'>
                     <span>Total price</span>
-                    <label>0.02 ETH</label>
+                    <label>{this.state.MintTotalPrice} ETH</label>
                 </div>
                 <div>
-                    <button onClick={this.props.OnMintClicked}>
+                    <button onClick={() => {
+                        let value = this.GetLimitValue(this.state.MintValue);
+                        this.props.OnMintClicked(value, value * this.props.MintPrise);
+                    }}>
                         MINT
                     </button>
                 </div>

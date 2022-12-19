@@ -37,6 +37,22 @@ const apiUrl = () => {
     }
 }
 
+const noToAI_ABI = () => {
+    if (isDevelopment()) {
+        return Configuration.Goerli.NoToAI
+    } else {
+        return Configuration.Mainnet.NoToAI
+    }
+}
+
+const noToAI_ContractAddress = () => {
+    if (isDevelopment()) {
+        return Configuration.Goerli.NoToAI_ContractAddress
+    } else {
+        return Configuration.Mainnet.NoToAI_ContractAddress
+    }
+}
+
 export const Environment = {
     identifier: environmentIdentifier,
     isDevelopment: isDevelopment(),
@@ -44,6 +60,8 @@ export const Environment = {
     connectorSupportedChainIds: connectorSupportedChainIds(),
     connectorSupportedChainIdHexString: connectorSupportedChainIdHexString(),
 
+    NoToAI_ABI: noToAI_ABI(),
+    NoToAI_ContractAddress: noToAI_ContractAddress(),
     etherscanAddress: etherScanUrl(),
     apiUrl: apiUrl(),
 }
