@@ -189,6 +189,25 @@
     border: 1px solid #404040;
 }
 
+.HomePageMintInputPanel input{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 45px;
+    border:none;
+    font-family: 'Urbanist';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    opacity: 0.6;
+    outline: none;
+    border: none;
+    appearance: none;
+    background: transparent;
+}
+
 .HomePageMintInputButton:hover {
     filter: drop-shadow(0 0 5px #EF0000);
 }

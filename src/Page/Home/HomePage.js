@@ -12,6 +12,46 @@ import {
 
 class HomePage extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            MintValue: 0
+        }
+    }
+
+    GetLimitValue(value) {
+        let offset = this.props.MintMax - this.props.MintCurrent;
+        if (value < 0) {
+            value = 0;
+        } else if (value > offset) {
+            value = offset;
+        }
+        return value;
+    }
+
+    OnValueChange = (e) => {
+        let value = this.GetLimitValue(e.target.value);
+        this.setState({
+            MintValue: value
+        })
+
+    }
+
+    OnClick = (e) => {
+        let id = e.target.id;
+        let value = this.state.MintValue;
+        if (id === 'btnUp') {
+            value = this.GetLimitValue(value + 1);
+            this.setState({
+                MintValue: value
+            })
+        } else if (id === 'btnDown') {
+            value = this.GetLimitValue(value - 1);
+            this.setState({
+                MintValue: value
+            })
+        }
+    }
 
     BuildDialog() {
         if (this.props.SoldOut === true) {
@@ -36,10 +76,20 @@ class HomePage extends Component {
             return (<div className='HomePageContentMint'>
                 <div className='HomePageMintTitle'>Mint number</div>
                 <div className='HomePageMintInputPanel'>
-                    <div className='HomePageMintInputUp HomePageMintInputButton'>
+                    <input
+                        onChange={this.OnValueChange}
+                        value={this.state.MintValue}
+                    />
+                    <div
+                        id='btnUp'
+                        onClick={this.OnClick}
+                        className='HomePageMintInputUp HomePageMintInputButton'>
                         {SvgUp("#6C6C6C")}
                     </div>
-                    <div className='HomePageMintInputDown HomePageMintInputButton'>
+                    <div
+                        id='btnDown'
+                        onClick={this.OnClick}
+                        className='HomePageMintInputDown HomePageMintInputButton'>
                         {SvgDown("#6C6C6C")}
                     </div>
                 </div>

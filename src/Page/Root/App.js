@@ -39,7 +39,7 @@ function App() {
 
     const GetShortAccount=(address)=>{
         if (address === undefined || address === null || address.length === 0) {
-            return ''
+            return undefined
         }
 
         if (address.length < 10) {
