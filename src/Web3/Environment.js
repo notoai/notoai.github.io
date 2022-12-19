@@ -1,4 +1,4 @@
-import {Configuration, Urls} from "./Configuration";
+import {Configuration} from "./Configuration";
 
 const environmentIdentifier = process.env.REACT_APP_ENV
 
@@ -29,14 +29,6 @@ const etherScanUrl = () => {
     }
 }
 
-const apiUrl = () => {
-    if (isDevelopment()) {
-        return Urls.ApiUrl.Development
-    } else {
-        return Urls.ApiUrl.Production
-    }
-}
-
 const noToAI_ABI = () => {
     if (isDevelopment()) {
         return Configuration.Goerli.NoToAI
@@ -63,5 +55,4 @@ export const Environment = {
     NoToAI_ABI: noToAI_ABI(),
     NoToAI_ContractAddress: noToAI_ContractAddress(),
     etherscanAddress: etherScanUrl(),
-    apiUrl: apiUrl(),
 }

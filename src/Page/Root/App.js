@@ -7,6 +7,7 @@ import {useWeb3React} from "@web3-react/core";
 import Web3 from "web3";
 import {Environment} from "../../Web3/Environment";
 import LoadingPage from "../Loading/LoadingPage";
+import {Jump2EtherScan} from "../../Uitls/JumpUtils";
 
 function App() {
     const {account, active, library} = useWeb3React()
@@ -184,10 +185,13 @@ function App() {
                 Button1={btn1}
                 Button2={btn2}
                 OnButton1Click={() => {
-                    console.log(transactionHash)
+                    Jump2EtherScan(transactionHash);
                 }}
                 OnButton2Click={() => {
-                    setMintClicked(false);
+                    setTimeout(()=>{
+                        loadData();
+                        setMintClicked(false);
+                    },100);
                 }}
             />);
         } else if (showLoading) {

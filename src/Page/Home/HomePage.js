@@ -9,6 +9,7 @@ import {
     SvgTwitterIcon,
     SvgUp
 } from '../../SVG/SvgImages';
+import {Jump2Contract, Jump2OpenSee, Jump2Twitter} from "../../Uitls/JumpUtils";
 
 class HomePage extends Component {
 
@@ -155,13 +156,25 @@ class HomePage extends Component {
                     <div className='HomePageMintPanelHeader'>
                         {GetSvgMintTitle()}
                         <div className='HomePageMintPanelHeaderRight'>
-                            <div className='HomePageLinkPanel'>
+                            <div
+                                onClick={() => {
+                                    Jump2Twitter();
+                                }}
+                                className='HomePageLinkPanel'>
                                 {SvgTwitterIcon('#DB0000')}
                             </div>
-                            <div className='HomePageLinkPanel'>
+                            <div
+                                onClick={() => {
+                                    Jump2OpenSee();
+                                }}
+                                className='HomePageLinkPanel'>
                                 {SvgOpenSeeIcon('#DB0000')}
                             </div>
-                            <div className='HomePageLinkPanel'>
+                            <div
+                                onClick={() => {
+                                    Jump2Contract();
+                                }}
+                                className='HomePageLinkPanel'>
                                 {SvgJumpIcon('#FFFFFF')}
                             </div>
                         </div>
