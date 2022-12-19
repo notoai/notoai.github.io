@@ -35,8 +35,19 @@ function App() {
     };
     const OnConnectClick = () => {
         connect(WalletType.MetaMask);
-        console.log('mint connect wallet\r\n');
     };
+
+    const GetShortAccount=(address)=>{
+        if (address === undefined || address === null || address.length === 0) {
+            return ''
+        }
+
+        if (address.length < 10) {
+            return address
+        }
+
+        return address.slice(0, 5) + '...' + address.slice(address.length - 4)
+    }
 
     const BuildContent = (id) => {
         if (id === 0) {
@@ -44,7 +55,7 @@ function App() {
                 <HomePage
                     OnMintClicked={OnMintClick}
                     OnConnectClicked={OnConnectClick}
-                    Address={account}
+                    Address={GetShortAccount(account)}
                     SoldOut={false}
                     MintMax={2020}
                     MintCurrent={0}
